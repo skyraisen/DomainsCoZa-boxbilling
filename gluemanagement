@@ -1,0 +1,202 @@
+<div class="contentpadded">
+<div class="page-header">
+  <div class="styled_title">
+    <h1>Glue Record Management</h1>
+  </div>
+</div>
+<div class="alert-message block-message info">
+  <p>Domain Name: <strong>{$strDomainName} </strong></p>
+</div>
+{if $error != ''}
+<div class="alert alert-warning error">
+  <p>{$error}</p>
+</div>
+{/if}
+{if $success != ''}
+<div class="alert alert-success success">
+  <p>{$success}</p>
+</div>
+{/if}
+
+<div class="row-fluid">
+  <div class="span14">
+  	<p>From here you can create and manage custom glue records for your domain.</p>
+  </div>
+</div>
+
+<strong>
+<div style="clear:both;"></div>
+
+<form method="post" action="/clientarea.php?action=domaindetails&id={$domainid}&modop=custom&a=gluemanagement">
+  <input type="hidden" name="modop" value="custom">
+  <input type="hidden" name="a" value="gluemanagement">
+<!--  <input type="hidden" name="id" value="{$registrarparams.domainid}"> -->
+<input type="hidden" name="id" value="{$domainid}">
+  <div class="page-header">
+    <div class="styled_title">
+      <h2>Compulsory</h2>
+    </div>
+  </div>
+  <fieldset class="twocol">
+  	<div style="float:left;margin-left: 24px;margin-right:30px;">
+    	<div style="font-weight: bold;color: #D23A00;border: 1px solid lightBlue;border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;width: 17px;padding-left: 4px;height: 18px;padding-top: 0px;position: relative;margin-left: -24px;background: #C6EDF9;font-size: 11px;padding-bottom: 3px;line-height: 16px;float: left;margin-right: 5px;">1</div>
+      <div style="margin-bottom:18px;">
+        <label for="ns1">Nameserver</label>
+        <div class="input">
+          <input type="text" name="strNs1" id="strNs1" class="small" value="{$strNs1}">
+          .{$strDomainName} </div>
+      </div>
+    	
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV4 Address</label>
+        <div class="input">
+          <input type="text" name="strNs1_ip4" id="strNs1_ip4" value="{$strNs1_ip4}">
+        </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV6 Address</label>
+        <div class="input">
+          <input type="text" name="strNs1_ip6" id="strNs1_ip6" value="{$strNs1_ip6}">
+        </div>
+      </div>
+    </div>
+    
+  	<div style="float:left;margin-left: 24px;">
+      <div style="font-weight: bold;color: #D23A00;border: 1px solid lightBlue;border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;width: 11px;padding-left: 4px;height: 12px;padding-top: 0px;position: relative;margin-left: -24px;background: #C6EDF9;font-size: 11px;padding-bottom: 3px;line-height: 16px;float: left;margin-right: 5px;">2</div>
+      <div style="margin-bottom:18px;">
+        <label for="ns2">Nameserver</label>
+        <div class="input">
+          <input type="text" name="strNs2" id="strNs2" class="small" value="{$strNs2}" onkeyup="toggleAccess(2);">
+          .{$strDomainName} </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV4 Address</label>
+        <div class="input">
+          <input type="text" name="strNs2_ip4" id="strNs2_ip4" value="{$strNs2_ip4}" onkeyup="toggleAccess(2);">
+        </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV6 Address</label>
+        <div class="input">
+          <input type="text" name="strNs2_ip6" id="strNs2_ip6" value="{$strNs2_ip6}" onkeyup="toggleAccess(2);">
+        </div>
+      </div>
+    </div>
+	</fieldset>
+  
+  <div style="clear:both; height:0px;"></div>
+  
+  <div class="page-header">
+    <div class="styled_title">
+      <h2>Optional</h2>
+    </div>
+  </div>
+
+  <fieldset class="twocol">
+  	<div style="float:left;margin-left: 24px;margin-right:30px;">
+      <div style="font-weight: bold;color: #D23A00;border: 1px solid lightBlue;border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;width: 11px;padding-left: 4px;height: 12px;padding-top: 0px;position: relative;margin-left: -24px;background: #C6EDF9;font-size: 11px;padding-bottom: 3px;line-height: 16px;float: left;margin-right: 5px;">3</div>
+      <div style="margin-bottom:18px;">
+        <label for="ns3">Nameserver</label>
+        <div class="input">
+          <input type="text" name="strNs3" id="strNs3" class="small" value="{$strNs3}" disabled="disabled" onkeyup="toggleAccess(3);">
+          .{$strDomainName} </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV4 Address</label>
+        <div class="input">
+          <input type="text" name="strNs3_ip4" id="strNs3_ip4" value="{$strNs3_ip4}" disabled="disabled" onkeyup="toggleAccess(3);">
+        </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV6 Address</label>
+        <div class="input">
+          <input type="text" name="strNs3_ip6" id="strNs3_ip6" value="{$strNs3_ip6}" disabled="disabled" onkeyup="toggleAccess(3);">
+        </div>
+      </div>
+    </div>
+  	<div style="float:left;margin-left: 24px;">
+      <div style="font-weight: bold;color: #D23A00;border: 1px solid lightBlue;border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;width: 11px;padding-left: 4px;height: 12px;padding-top: 0px;position: relative;margin-left: -24px;background: #C6EDF9;font-size: 11px;padding-bottom: 3px;line-height: 16px;float: left;margin-right: 5px;">4</div>
+      <div style="margin-bottom:18px;">
+        <label for="ns4">Nameserver</label>
+        <div class="input">
+          <input type="text" name="strNs4" id="strNs4" class="small" value="{$strNs4}" disabled="disabled" onkeyup="toggleAccess(4);">
+          .{$strDomainName} </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV4 Address</label>
+        <div class="input">
+          <input type="text" name="strNs4_ip4" id="strNs4_ip4" value="{$strNs4_ip4}" disabled="disabled" onkeyup="toggleAccess(4);">
+        </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV6 Address</label>
+        <div class="input">
+          <input type="text" name="strNs4_ip6" id="strNs4_ip6" value="{$strNs4_ip6}" disabled="disabled" onkeyup="toggleAccess(4);">
+        </div>
+      </div>
+    </div>
+    
+    <div style="clear:both; height:20px;"></div>
+    
+  	<div style="float:left;margin-left: 24px;margin-right:30px;">
+      <div style="font-weight: bold;color: #D23A00;border: 1px solid lightBlue;border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;width: 11px;padding-left: 4px;height: 12px;padding-top: 0px;position: relative;margin-left: -24px;background: #C6EDF9;font-size: 11px;padding-bottom: 3px;line-height: 16px;float: left;margin-right: 5px;">5</div>
+      <div style="margin-bottom:18px;">
+        <label for="ns5">Nameserver</label>
+        <div class="input">
+          <input type="text" name="strNs5" id="strNs5" class="small" value="{$strNs5}" disabled="disabled" onkeyup="toggleAccess(5);">
+          .{$strDomainName} </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV4 Address</label>
+        <div class="input">
+          <input type="text" name="strNs5_ip4" id="strNs5_ip4" value="{$strNs5_ip4}" disabled="disabled" onkeyup="toggleAccess(5);">
+        </div>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label for="ip1">IPV6 Address</label>
+        <div class="input">
+          <input type="text" name="strNs5_ip6" id="strNs5_ip6" value="{$strNs5_ip6}" disabled="disabled" onkeyup="toggleAccess(5);">
+        </div>
+      </div>
+    </div>
+    
+    <div style="clear:both; height:20px;"></div>
+        
+    <div align="center">
+      <input type="submit" value="Save Changes" class="btn btn-primary">
+    </div>
+  </fieldset>
+</form>
+
+<form method="post" action="/clientarea.php?action=domaindetails">
+  <input type="hidden" name="id" value="{$domainid}">
+  <p style="margin-left:24px;">
+    <input type="submit" value="« Back" class="btn">
+  </p>
+</form>
+</div>
+</strong>
+{literal}
+<script type="text/javascript">
+	$(document).ready(function(){
+		for (i=2; i<=4; i++) {
+			if ($('#strNs'+i).val() != '' && ($('#strNs'+i+'_ip4').val() != '' || $('#strNs'+i+'_ip6').val() != '')) {
+				$('#strNs'+(i+1)).attr('disabled', false);
+				$('#strNs'+(i+1)+'_ip4').attr('disabled', false);
+				$('#strNs'+(i+1)+'_ip6').attr('disabled', false);
+			}
+		}
+	});
+
+	function toggleAccess(i) {
+		var action = true;
+		if ($('#strNs'+i).val() != '' && ($('#strNs'+i+'_ip4').val() != '' || $('#strNs'+i+'_ip6').val() != '')) {
+			action = false;
+		}
+
+		$('#strNs'+(i+1)).attr('disabled', action);
+		$('#strNs'+(i+1)+'_ip4').attr('disabled', action);
+		$('#strNs'+(i+1)+'_ip6').attr('disabled', action);
+	}
+</script>
+{/literal}
